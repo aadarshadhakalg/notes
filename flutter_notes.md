@@ -2567,8 +2567,6 @@ Explain Provider and Bloc state management.
 
 # 11. References for Current Flutter Terminology
 
-These references are useful for teachers and students who want official wording:
-
 - Flutter architectural overview: https://docs.flutter.dev/resources/architectural-overview
 - Impeller rendering engine: https://docs.flutter.dev/perf/impeller
 - Platform channels: https://docs.flutter.dev/platform-integration/platform-channels
