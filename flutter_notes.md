@@ -2,7 +2,6 @@
 
 Course: Mobile Computing  
 Main example used throughout: Fitness Tracker App  
-Audience: Beginner Flutter students preparing for written exams and practical viva
 
 ---
 
