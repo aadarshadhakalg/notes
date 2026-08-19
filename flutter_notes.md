@@ -2,6 +2,7 @@
 
 Course: Mobile Computing  
 Main example used throughout: Fitness Tracker App  
+Audience: Beginner Flutter students preparing for written exams and practical viva
 
 ---
 
@@ -17,6 +18,21 @@ Read each topic in this order:
 6. Test yourself with MCQs.
 
 In exams, do not only write code. First write the concept, then explain with points, then give a small example.
+
+---
+
+## Curriculum Coverage
+
+| Curriculum Unit | Main Course Topic | Covered In These Notes |
+|---|---|---|
+| Unit 1 | Introduction to Flutter and Dart | Chapters 1 and 2 |
+| Unit 2 | Flutter basics, widgets, styling, theming | Chapters 3, 4, and 5 |
+| Unit 3 | Navigation, routing, basic state management | Chapters 6 and 7 |
+| Unit 4 | State management and HTTP/API integration | Chapters 7 and 8 |
+| Unit 5 | Platform features and Firebase | Chapters 9 and 10 |
+| Unit 6 | Advanced state management, location, notifications | Chapters 11 and 12 |
+| Unit 7 | Animations, custom UI, testing | Chapters 13 and 14 |
+| Unit 8 | Releasing app and final project preparation | Chapter 15 and practice sections |
 
 ---
 
@@ -272,6 +288,10 @@ Cross-platform mobile application development means creating one application usi
 Flutter is preferred because it reduces development time and cost. It provides hot reload, which allows developers to see changes quickly. It also provides many ready-made widgets for building beautiful user interfaces. Flutter gives good performance because Dart code is compiled to native code on mobile platforms, and Flutter uses its own rendering engine to draw the UI.
 
 For example, in a Fitness Tracker app, the dashboard, profile page, workout list, and water intake screen can be written once in Flutter and used for both Android and iOS. If the app needs phone sensor data, Flutter can use plugins or platform channels to communicate with native Android or iOS code. Therefore, Flutter is useful for building modern, fast, and beautiful cross-platform mobile applications.
+
+In exam answers, students should also mention that native development is still useful when an app needs very deep platform-specific control, maximum platform integration, or a separate Android/iOS specialist team. Cross-platform development is useful when the same business app must be delivered quickly to both Android and iOS. Flutter is strong because it does not depend only on native UI components. It draws its own UI using Flutter's rendering engine, so the app looks consistent across platforms.
+
+Compared with React Native, Flutter has a more consistent widget-based UI system and does not require a JavaScript bridge for most UI rendering. Compared with Kotlin and Swift, Flutter saves time because the same Dart code can serve both Android and iOS. In a Fitness Tracker app, this means one team can build login, dashboard, workout list, charts, profile, and theme system together. This reduces duplicate work and helps maintain the same user experience on both platforms.
 
 ## 1.9 MCQs
 
@@ -657,6 +677,10 @@ Collections are used to store multiple values. A List stores ordered values, a M
 
 Null safety is an important Dart feature that prevents errors caused by null values. A normal variable cannot store null, but a nullable variable can be declared using `?`. For example, `String? profilePhoto` means the profile photo may or may not exist. The `??` operator can provide a default value if the variable is null. Thus, Dart features make Flutter app development safer, cleaner, and easier.
 
+Dart also supports operators and control flow. Operators are used for calculation, comparison, and logical decisions. For example, `steps >= goal` can check whether the user completed the daily step goal. Control flow statements such as `if`, `else`, `switch`, `for`, and `while` help the app make decisions and repeat tasks. For example, a `for` loop can display weekly step data, and an `if` statement can show "Goal completed" when steps are greater than the goal.
+
+Object-oriented programming is important because Flutter apps are made of many classes. Widgets themselves are classes. A `Workout` class can represent workout data, and a `WorkoutService` class can contain logic for loading workouts. By using variables, functions, collections, OOP, and null safety together, Dart helps developers write organized and safe Flutter applications.
+
 ## 2.11 MCQs
 
 1. Which data type is used for true or false values in Dart?
@@ -937,6 +961,10 @@ A Flutter project contains several important folders and files. The `lib` folder
 In Flutter, the `main()` function is the entry point of the app. Inside `main()`, we call `runApp()` and pass the root widget of the application. `MaterialApp` is an app-level wrapper that provides Material Design, theme, navigation, and routing features. `CupertinoApp` is used for iOS-style apps.
 
 Hot reload is a useful Flutter feature that allows developers to see code changes quickly without restarting the entire app. It is mostly used for UI changes and usually keeps the current state. Hot restart restarts the Dart app and clears the state. These features make Flutter development faster and easier.
+
+The app startup flow is also important. The operating system starts the Flutter app, Dart runs the `main()` function, and `runApp()` attaches the root widget to the screen. Usually, this root widget is an app-level wrapper such as `MaterialApp` or `CupertinoApp`. `MaterialApp` gives Material Design features such as theme, routes, navigator, localization support, and scaffold structure. `CupertinoApp` is used when the app needs iOS-style look and behavior.
+
+Students should remember that Flutter project structure separates common Dart code from platform-specific code. Most app logic is written inside `lib`, but Android-specific permissions may be placed in the Android folder and iOS-specific permissions may be placed in the iOS folder. Therefore, understanding project structure helps developers know where to write Flutter code and where to configure platform features.
 
 ## 3.11 MCQs
 
@@ -1350,6 +1378,12 @@ Flutter provides many layout widgets. `Text` displays text. `Container` is used 
 
 Thus, widgets and layouts are central to Flutter development. By combining small widgets, developers can build complex and beautiful screens.
 
+A widget tree is formed when widgets are nested inside other widgets. For example, a Fitness Tracker dashboard may have `Scaffold` as the page structure, `Column` as the main vertical layout, `Row` for summary cards, and `ListView.builder` for workout history. Flutter reads this widget tree and decides how to draw the screen.
+
+The difference between `StatelessWidget` and `StatefulWidget` is very important in exams. If the widget only receives data and displays it, `StatelessWidget` is enough. If the widget owns data that changes during runtime, `StatefulWidget` is needed. However, in larger apps, even changing data may be managed by Provider or Bloc instead of keeping all logic inside StatefulWidget. This keeps UI widgets smaller and cleaner.
+
+Students should also mention layout direction. `Row` places children from left to right, and `Column` places children from top to bottom. `Stack` is useful for overlay UI such as putting a progress label above a circular chart. `ListView.builder` is preferred for API/database lists because it builds visible items efficiently instead of creating all items at once.
+
 ## 4.10 MCQs
 
 1. Which widget arranges children vertically?
@@ -1648,6 +1682,12 @@ Custom fonts can be added manually using font files or easily by using the `goog
 
 Theming is done using `ThemeData`. A light theme uses a bright background and dark text, while a dark theme uses a dark background and light text. Flutter allows defining both `theme` and `darkTheme` in `MaterialApp`. This makes the app visually consistent and user-friendly.
 
+In a real app, theming avoids repeated styling. Without theme, a developer may manually set button color, text color, and font size on every screen. This becomes difficult to maintain. With `ThemeData`, the same primary color, text style, button style, and app bar style can be applied across the whole app.
+
+For example, a Fitness Tracker app may use green as the primary color for health and progress. The same green can appear in buttons, progress indicators, selected icons, and app bars. If the college or client later asks to change the primary color, the developer can update the theme in one place instead of changing every widget.
+
+Dark theme is important because many users prefer using apps at night. Flutter can define `theme` for light mode and `darkTheme` for dark mode. The app can also use system theme mode so that it follows the phone setting. Good styling and theming improve readability, consistency, accessibility, and user experience.
+
 ## 5.10 MCQs
 
 1. Padding means:
@@ -1923,6 +1963,12 @@ Named routes allow developers to give names to screens, such as `/profile` or `/
 
 Data can be passed between screens using constructors or route arguments. For example, when opening a workout detail screen, the selected workout name such as "Running" can be passed to the next screen. This allows the detail screen to show correct information. Therefore, navigation and routing are important for building multi-screen Flutter applications.
 
+Flutter has imperative and declarative routing styles. Imperative routing is command-based. The developer directly says `push` or `pop`. Declarative routing describes which screens should be visible based on app state. For beginner apps, `Navigator.push()` and `pop()` are easier to understand. For complex apps with authentication, deep linking, and web URLs, declarative routing is often more suitable.
+
+The Navigator stack can be compared to plates stacked on top of each other. The last screen opened is placed on top. When the user goes back, the top screen is removed. In a Fitness Tracker app, Dashboard may be first, WorkoutList second, and WorkoutDetail third. Pressing back removes WorkoutDetail and shows WorkoutList again.
+
+Passing data is also a common exam point. Constructor passing is simple and type-safe. Named route arguments are useful when using route names. For example, the app can pass a workout id to the detail screen, and the detail screen can load the correct workout. Without data passing, every screen would show the same static information, which is not useful in real apps.
+
 ## 6.10 MCQs
 
 1. Navigator in Flutter works like:
@@ -2045,6 +2091,16 @@ class _StepCounterState extends State<StepCounter> {
 - UI and logic can become mixed
 - Testing can become harder
 
+### How setState Works
+
+When `setState()` is called, Flutter marks that widget as dirty. Dirty means the widget needs to be rebuilt because its data has changed. After that, Flutter calls the `build()` method again for that widget and updates the visible UI.
+
+Important point: `setState()` does not rebuild the whole app. It rebuilds the widget where it is called and the child widgets below it. This is why students should keep widgets small. If one very large screen uses one big `setState()`, a lot of UI may rebuild unnecessarily.
+
+Exam example:
+
+In a Fitness Tracker app, if only the water glass counter changes, `setState()` is enough. But if water data must also update dashboard, history screen, notification logic, and profile achievement badge, `setState()` becomes difficult. In that case, Provider or Bloc is better.
+
 ## 7.4 Dependency Injection
 
 Dependency Injection means providing an object from outside instead of creating it inside the class.
@@ -2142,6 +2198,12 @@ flowchart TB
 
 Many state management libraries are built on similar ideas. Provider also uses inherited mechanisms internally to make data available down the widget tree.
 
+### How InheritedWidget Works
+
+`InheritedWidget` is placed above other widgets in the widget tree. Child widgets can search upward through their `BuildContext` and get the nearest matching inherited widget. When the inherited data changes, Flutter can rebuild only the widgets that depend on that data.
+
+This is important because it avoids manually passing data through many constructors. Without this idea, a step goal value may need to be passed from `FitnessApp` to `DashboardScreen`, then to `ProgressSection`, then to `StepGoalText`. This is called prop drilling. InheritedWidget and Provider reduce this problem.
+
 ## 7.7 Provider
 
 Provider is a popular Flutter state management package. It makes it easier to provide and read state across the widget tree.
@@ -2230,6 +2292,73 @@ flowchart TB
   A["Button Tap"] --> B["FitnessProvider.addSteps()"] --> C["steps value changes"] --> D["notifyListeners()"] --> E["Consumer rebuilds UI"] --> F["New step count shown"]
 ```
 
+### How Provider Works Internally
+
+Provider puts an object above the widgets that need it. That object may be a simple service, a repository, or a `ChangeNotifier`.
+
+When a child widget uses `context.watch<FitnessProvider>()` or `Consumer<FitnessProvider>`, it becomes a listener. This means the widget is interested in changes from that provider. When the provider calls `notifyListeners()`, all listening widgets are told to rebuild.
+
+`context.read<FitnessProvider>()` is different. It reads the provider once but does not listen for changes. It is commonly used inside button clicks because a button only needs to call a method, not rebuild itself.
+
+### context.read, context.watch, and Consumer
+
+| Method/Widget | Listens for changes? | Common Use |
+|---|---|---|
+| `context.read<T>()` | No | Call methods, button click |
+| `context.watch<T>()` | Yes | Rebuild widget when value changes |
+| `Consumer<T>` | Yes | Rebuild only a small part of UI |
+| `Selector<T, S>` | Yes, selected value only | Rebuild only when selected field changes |
+
+Example:
+
+```dart
+ElevatedButton(
+  onPressed: () {
+    context.read<FitnessProvider>().addSteps();
+  },
+  child: const Text('Add Steps'),
+)
+```
+
+Here `read` is correct because the button only sends an action. The `Text` widget showing step count should use `watch` or `Consumer`.
+
+### Provider With API State
+
+Provider can also manage API loading, success, and error state.
+
+```dart
+class WorkoutProvider extends ChangeNotifier {
+  final WorkoutApiService api;
+
+  WorkoutProvider(this.api);
+
+  bool isLoading = false;
+  String? error;
+  List<Workout> workouts = [];
+
+  Future<void> loadWorkouts() async {
+    isLoading = true;
+    error = null;
+    notifyListeners();
+
+    try {
+      workouts = await api.fetchWorkouts();
+    } catch (e) {
+      error = 'Could not load workouts';
+    }
+
+    isLoading = false;
+    notifyListeners();
+  }
+}
+```
+
+This keeps API logic away from the widget. The screen only decides what to show:
+
+- If `isLoading == true`, show loader.
+- If `error != null`, show error message.
+- If data exists, show workout list.
+
 ## 7.8 Bloc and flutter_bloc Concepts
 
 Bloc means Business Logic Component. It separates business logic from UI.
@@ -2278,6 +2407,107 @@ class StepState {
 ```
 
 In real Flutter Bloc code, the Bloc class receives events and emits new states.
+
+### How BlocProvider Works
+
+`BlocProvider` creates or provides a Bloc/Cubit and makes it available to child widgets below it in the widget tree. It works like a provider for Bloc objects.
+
+Example:
+
+```dart
+BlocProvider(
+  create: (context) => WorkoutBloc(
+    repository: context.read<WorkoutRepository>(),
+  ),
+  child: const WorkoutScreen(),
+)
+```
+
+Here, `WorkoutBloc` is created above `WorkoutScreen`. Inside `WorkoutScreen`, any child widget can access the same bloc using:
+
+```dart
+context.read<WorkoutBloc>().add(LoadWorkouts());
+```
+
+Important points:
+
+- `BlocProvider` controls where the Bloc is available.
+- If it is placed above `MaterialApp`, many screens can access it.
+- If it is placed above only one screen, only that screen and its children can access it.
+- When `BlocProvider` creates the Bloc, it also closes it automatically when that part of widget tree is removed.
+- If an existing Bloc is passed using `BlocProvider.value`, the developer is responsible for its lifecycle.
+
+### BlocBuilder, BlocListener, and BlocConsumer in Detail
+
+`BlocBuilder` is used to build UI from state. It should be used for visual changes.
+
+```dart
+BlocBuilder<WorkoutBloc, WorkoutState>(
+  builder: (context, state) {
+    if (state is WorkoutLoading) {
+      return const CircularProgressIndicator();
+    }
+    if (state is WorkoutLoaded) {
+      return WorkoutList(workouts: state.workouts);
+    }
+    if (state is WorkoutError) {
+      return Text(state.message);
+    }
+    return const SizedBox();
+  },
+)
+```
+
+`BlocListener` is used for one-time side effects. A side effect is an action that should happen once, not a UI rebuild. Examples are showing a snackbar, navigating to another screen, or displaying a dialog.
+
+```dart
+BlocListener<WorkoutBloc, WorkoutState>(
+  listener: (context, state) {
+    if (state is WorkoutError) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(state.message)),
+      );
+    }
+  },
+  child: const WorkoutView(),
+)
+```
+
+`BlocConsumer` combines both. It has `listener` and `builder` in the same widget. Use it when one screen needs both UI rebuild and side effects.
+
+### Bloc Event-State Example
+
+```dart
+sealed class WorkoutEvent {}
+
+class LoadWorkouts extends WorkoutEvent {}
+
+sealed class WorkoutState {}
+
+class WorkoutInitial extends WorkoutState {}
+class WorkoutLoading extends WorkoutState {}
+
+class WorkoutLoaded extends WorkoutState {
+  final List<Workout> workouts;
+  WorkoutLoaded(this.workouts);
+}
+
+class WorkoutError extends WorkoutState {
+  final String message;
+  WorkoutError(this.message);
+}
+```
+
+The flow is:
+
+1. User opens workout screen.
+2. UI sends `LoadWorkouts` event.
+3. Bloc receives the event.
+4. Bloc emits `WorkoutLoading`.
+5. Bloc calls repository/API.
+6. If API succeeds, Bloc emits `WorkoutLoaded`.
+7. If API fails, Bloc emits `WorkoutError`.
+8. `BlocBuilder` rebuilds UI according to state.
 
 ### Provider vs Bloc
 
@@ -2332,17 +2562,19 @@ Explain state management in Flutter. Discuss `setState`, dependency injection, B
 
 State is the data that can change in an application. State management is the process of controlling how data changes and how the user interface updates when that data changes. In a Fitness Tracker app, examples of state include step count, water intake, selected workout, login status, theme mode, and user profile information.
 
-The simplest state management technique in Flutter is `setState()`. It is used inside a StatefulWidget to update local state. For example, a water counter can increase when the user presses a button. After changing the value, `setState()` is called so Flutter rebuilds the widget and displays the new value. However, `setState()` is not suitable for large apps because sharing data between many screens becomes difficult.
+The simplest state management technique in Flutter is `setState()`. It is used inside a `StatefulWidget` to update local state. For example, a water counter can increase when the user presses a button. After changing the value, `setState()` is called so Flutter marks that widget as dirty and calls its `build()` method again. This updates the visible UI. `setState()` is best when the changing data belongs to one widget or one screen only.
+
+However, `setState()` is not suitable for large shared app state. If a Fitness Tracker app has step count shown on dashboard, profile, achievement, and history screens, passing the value manually becomes difficult. The logic also gets mixed with UI code, and testing becomes harder.
 
 Dependency injection means providing required objects from outside instead of creating them inside a class. For example, a DashboardScreen can receive a FitnessService object from outside. This makes code easier to test and maintain. `BuildContext` represents the location of a widget in the widget tree. It is used to access Navigator, Theme, MediaQuery, and Provider data.
 
-`InheritedWidget` is a low-level Flutter widget used to pass data down the widget tree. It allows child widgets to access shared data from parent widgets. Many state management solutions use a similar idea internally.
+`InheritedWidget` is a low-level Flutter widget used to pass data down the widget tree. It allows child widgets to access shared data from parent widgets using `BuildContext`. When inherited data changes, Flutter knows which dependent widgets need rebuilding. This avoids passing the same data through many constructors. Provider is built on a similar inherited mechanism.
 
-Provider is a popular state management package in Flutter. It commonly uses `ChangeNotifier` to store state and `notifyListeners()` to update listening widgets. `ChangeNotifierProvider` provides the state object, and `Consumer` rebuilds UI when the state changes. `MultiProvider` is used when there are multiple providers such as FitnessProvider and ThemeProvider.
+Provider is a popular state management package in Flutter. It commonly uses `ChangeNotifier` to store state and `notifyListeners()` to update listening widgets. `ChangeNotifierProvider` provides the state object above the widgets that need it. Widgets can read data using `context.read`, `context.watch`, or `Consumer`. `context.read` is used to call methods and does not listen for changes. `context.watch` listens and rebuilds the widget when data changes. `Consumer` is useful when only a small part of UI should rebuild. `MultiProvider` is used when there are multiple providers such as FitnessProvider, ThemeProvider, and AuthProvider.
 
-Bloc stands for Business Logic Component. It separates business logic from UI. In Bloc, the UI sends events, the Bloc processes those events, and then emits states. `BlocProvider` provides the Bloc, and `BlocBuilder` rebuilds the UI based on the new state. Bloc is useful for large applications because it provides a structured and testable data flow.
+Bloc stands for Business Logic Component. It separates business logic from UI. In Bloc, the UI sends events, the Bloc processes those events, and then emits states. `BlocProvider` creates or provides the Bloc to the widget tree. `BlocBuilder` rebuilds the UI based on state, while `BlocListener` handles one-time actions such as snackbar and navigation. For example, when the workout screen opens, the UI sends a `LoadWorkouts` event. The Bloc emits `WorkoutLoading`, calls the repository/API, and then emits either `WorkoutLoaded` or `WorkoutError`. Bloc is useful for large applications because it gives a structured, predictable, and testable data flow.
 
-Therefore, state management is one of the most important topics in Flutter. Small apps may use `setState()`, medium apps may use Provider, and larger apps may use Bloc depending on complexity.
+Therefore, state management is one of the most important topics in Flutter. Small local state can use `setState()`. Shared app state can use Provider. Large apps with many actions, API states, and business rules can use Bloc. The correct choice depends on app size, data-sharing requirement, testing need, and team experience.
 
 ## 7.12 MCQs
 
@@ -2383,9 +2615,1970 @@ Therefore, state management is one of the most important topics in Flutter. Smal
 
 ---
 
-# 8. Quick Revision Tables
+# 8. API Calls in Flutter
 
-## 8.1 Flutter Core Summary
+## 8.1 Definition
+
+An API call in Flutter means sending a request from a Flutter app to a server and receiving data or sending data back.
+
+In mobile apps, APIs are commonly used to:
+
+- Get data from a database through a backend server
+- Send login information
+- Save user progress
+- Load product, workout, attendance, or profile data
+- Connect the app with cloud services
+
+In Flutter, API calls are usually handled using packages such as `http` or `dio`.
+
+## 8.2 Beginner Explanation
+
+Think of an API as a waiter in a restaurant.
+
+- The Flutter app is the customer.
+- The API is the waiter.
+- The server/database is the kitchen.
+- The app asks for data.
+- The API brings the data back.
+
+The Flutter app does not directly open the server database. It talks to the server through API endpoints.
+
+Example endpoint: `https://api.fitnessapp.com/workouts`
+
+This endpoint may return workout data in JSON format.
+
+## 8.3 REST API and JSON
+
+REST API is a common style for building APIs. It uses HTTP methods.
+
+| HTTP Method | Meaning | Fitness Tracker Example |
+|---|---|---|
+| GET | Read data | Get workout list |
+| POST | Create data | Add new workout |
+| PUT/PATCH | Update data | Edit user profile |
+| DELETE | Delete data | Delete a workout plan |
+
+JSON is a simple text format used to transfer data.
+
+Example JSON:
+
+```json
+{
+  "id": 1,
+  "title": "Morning Run",
+  "duration": 30
+}
+```
+
+## 8.4 Using Dio Package
+
+`dio` is a powerful HTTP client package for Dart and Flutter. It supports API requests, interceptors, timeout settings, file upload/download, and error handling.
+
+Add the dependency using Flutter command:
+
+```bash
+flutter pub add dio
+```
+
+Then import it:
+
+```dart
+import 'package:dio/dio.dart';
+```
+
+## 8.5 Model Class
+
+A model class converts raw JSON into a Dart object.
+
+Fitness Tracker example:
+
+```dart
+class Workout {
+  final int id;
+  final String title;
+  final int duration;
+
+  Workout({
+    required this.id,
+    required this.title,
+    required this.duration,
+  });
+
+  factory Workout.fromJson(Map<String, dynamic> json) {
+    return Workout(
+      id: json['id'],
+      title: json['title'],
+      duration: json['duration'],
+    );
+  }
+}
+```
+
+## 8.6 API Service Class
+
+It is a good practice to keep API logic outside the UI widget.
+
+```dart
+class WorkoutApiService {
+  final Dio dio = Dio();
+
+  Future<List<Workout>> fetchWorkouts() async {
+    final response = await dio.get(
+      'https://api.example.com/workouts',
+    );
+
+    final List data = response.data;
+    return data.map((item) => Workout.fromJson(item)).toList();
+  }
+}
+```
+
+### Repository Layer
+
+In bigger apps, developers often add a repository layer between UI/state management and API service.
+
+Simple meaning:
+
+- API service knows how to call the server.
+- Repository decides where data should come from.
+- UI or Bloc/Provider asks repository for data.
+
+The repository may get data from API, local database, cache, or Firebase. This makes the app easier to change later.
+
+Fitness Tracker example:
+
+```dart
+class WorkoutRepository {
+  final WorkoutApiService api;
+
+  WorkoutRepository(this.api);
+
+  Future<List<Workout>> getWorkouts() {
+    return api.fetchWorkouts();
+  }
+}
+```
+
+If the app later adds offline cache, only the repository needs to change. The UI does not need to know whether data came from API or local storage.
+
+## 8.7 Loading, Success, and Error States
+
+API calls take time. The app should show different UI for different states.
+
+| State | Meaning | UI Example |
+|---|---|---|
+| Loading | Data is coming | CircularProgressIndicator |
+| Success | Data received | List of workouts |
+| Error | Something failed | Error message and retry button |
+
+## 8.8 Using FutureBuilder
+
+`FutureBuilder` builds UI according to the status of a `Future`.
+
+```dart
+FutureBuilder<List<Workout>>(
+  future: WorkoutApiService().fetchWorkouts(),
+  builder: (context, snapshot) {
+    if (snapshot.connectionState == ConnectionState.waiting) {
+      return CircularProgressIndicator();
+    }
+
+    if (snapshot.hasError) {
+      return Text('Failed to load workouts');
+    }
+
+    final workouts = snapshot.data ?? [];
+
+    return ListView.builder(
+      itemCount: workouts.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(workouts[index].title),
+          subtitle: Text('${workouts[index].duration} minutes'),
+        );
+      },
+    );
+  },
+)
+```
+
+## 8.9 API Call With Provider or Bloc
+
+For small screens, `FutureBuilder` is acceptable. For bigger apps, Provider or Bloc gives better structure.
+
+In a Fitness Tracker app:
+
+- API service fetches workouts
+- Provider/Bloc stores loading, data, and error
+- UI listens to Provider/Bloc
+- UI updates automatically when state changes
+
+## 8.10 Diagram: API Data Flow
+
+```mermaid
+flowchart TD
+  A["Workout Screen"] --> B["Provider or Bloc"]
+  B --> C["Workout Repository"]
+  C --> D["Dio API Service"]
+  D --> E["REST API Server"]
+  E --> F["JSON Response"]
+  F --> G["Workout Model"]
+  G --> B
+  B --> H["Loading / Success / Error UI"]
+```
+
+## 8.11 Common Exam Points and Mistakes
+
+Important points:
+
+- API calls are asynchronous.
+- `Future` represents a value available later.
+- JSON should be converted into model classes.
+- UI should handle loading, success, and error states.
+- API code should not be mixed heavily inside widgets.
+- Dio and http are both used for networking.
+
+Common mistakes:
+
+- Forgetting `async` and `await`
+- Not handling API errors
+- Assuming API response is always successful
+- Displaying blank screen during loading
+- Writing all API logic inside `build()`
+- Calling API repeatedly every time `build()` runs
+- Not separating model, service, repository, and UI
+
+## 8.12 Sample Long Question and Answer
+
+### Question
+
+Explain API integration in Flutter using Dio. Include REST API, JSON, model class, API service, and loading/error/success UI states.
+
+### Answer
+
+API integration means connecting a Flutter app with a server using API endpoints. In modern mobile apps, data usually lives on a server, not inside the phone only. REST APIs use HTTP methods such as GET, POST, PUT/PATCH, and DELETE. GET reads data, POST creates data, PUT/PATCH updates data, and DELETE removes data. The server commonly returns data in JSON format because JSON is simple and easy to convert into Dart objects.
+
+In Flutter, packages such as Dio can be used to send HTTP requests. Dio is powerful because it supports GET/POST requests, timeout settings, interceptors, file upload/download, cancellation, and error handling. The dependency can be added using `flutter pub add dio`, and then imported using `import 'package:dio/dio.dart';`.
+
+First, a model class is created to represent the JSON data in Dart. For example, a `Workout` model may contain `id`, `title`, and `duration`. The `Workout.fromJson()` factory constructor converts JSON map data into a Dart object. This is important because working with model objects is safer and clearer than using raw JSON everywhere in the UI.
+
+Second, an API service class is created. This class uses Dio to call the endpoint, for example `/workouts`. It receives the response, reads `response.data`, converts the JSON list into a list of `Workout` objects, and returns `Future<List<Workout>>`. Because API calls take time, the method must be `async` and must use `await`.
+
+Third, in a well-structured app, a repository can be added between the state management layer and API service. The repository hides the source of data. Today data may come from REST API, but later it may come from cache, local database, or Firebase. This keeps the UI stable even if the data source changes.
+
+Fourth, the UI must handle loading, success, and error states. While data is loading, the app can show `CircularProgressIndicator`. If data is received, the app can show it using `ListView.builder`. If an error occurs, the app should show an error message and a retry button. In small examples, `FutureBuilder` can be used. In larger apps, Provider or Bloc should manage these states so API logic does not stay inside the widget.
+
+In a Fitness Tracker app, the workout screen can call a workout API, receive JSON workout data, convert it into `Workout` objects, and display the workouts in a list. If the user pulls to refresh, the state management class calls the repository again. If internet fails, the UI shows an error instead of a blank screen. This makes the app reliable and user-friendly.
+
+## 8.13 MCQs
+
+1. Which package is commonly used for advanced HTTP requests in Flutter?
+   - A. dio
+   - B. google_fonts
+   - C. image_picker only
+   - D. shared_preferences only
+   - Answer: A
+
+2. JSON data from API should usually be converted into:
+   - A. Model objects
+   - B. App icons
+   - C. Android manifest only
+   - D. CSS files
+   - Answer: A
+
+3. Which HTTP method is mainly used to read data?
+   - A. GET
+   - B. POST
+   - C. DELETE
+   - D. PATCH
+   - Answer: A
+
+4. What should be shown while API data is loading?
+   - A. Loading indicator
+   - B. Blank error-free assumption
+   - C. Only app logo forever
+   - D. Android folder
+   - Answer: A
+
+5. `FutureBuilder` is used with:
+   - A. Future
+   - B. Set only
+   - C. Image.asset only
+   - D. ThemeData only
+   - Answer: A
+
+---
+
+# 9. Platform Features and Plugins
+
+## 9.1 Definition
+
+Platform features are mobile device features provided by Android or iOS, such as camera, gallery, location, storage, microphone, contacts, and notifications.
+
+Flutter can access these features using plugins.
+
+A plugin is a package that connects Dart code with native Android/iOS code.
+
+## 9.2 Beginner Explanation
+
+Flutter is like the main app body. But some features belong to the phone operating system.
+
+For example:
+
+- Camera belongs to Android/iOS
+- Location belongs to Android/iOS
+- Notification system belongs to Android/iOS
+- Gallery permission belongs to Android/iOS
+
+Flutter uses plugins as bridges to talk to these platform features.
+
+## 9.3 Platform Channels
+
+Platform channels allow Dart code to communicate with native Android and iOS code.
+
+Most students do not need to write platform channel code directly because plugins already provide ready-made methods.
+
+Example:
+
+- `image_picker` uses native camera/gallery APIs
+- `permission_handler` uses native permission APIs
+- `geolocator` uses native location APIs
+
+### How a Plugin Works
+
+A plugin usually has two sides:
+
+- Dart API used by Flutter developer
+- Native Android/iOS code hidden inside the package
+
+When the Flutter app calls a plugin method, the plugin sends a message to the native platform. The native platform performs the action and returns the result to Dart.
+
+Example:
+
+1. User taps profile image.
+2. Flutter calls `pickImage()`.
+3. Plugin opens native Android/iOS gallery.
+4. User selects image.
+5. Plugin returns image path to Dart.
+6. Flutter displays selected image.
+
+## 9.4 image_picker Plugin
+
+`image_picker` is used to select images or videos from gallery or camera.
+
+Fitness Tracker example:
+
+The user uploads a profile photo or meal photo.
+
+```dart
+final picker = ImagePicker();
+
+final image = await picker.pickImage(
+  source: ImageSource.gallery,
+);
+
+if (image != null) {
+  print(image.path);
+}
+```
+
+Common sources:
+
+- `ImageSource.camera`
+- `ImageSource.gallery`
+
+## 9.5 permission_handler Plugin
+
+`permission_handler` is used to ask and check permissions.
+
+Fitness Tracker example:
+
+The app asks permission before accessing camera, gallery, or location.
+
+```dart
+final status = await Permission.camera.request();
+
+if (status.isGranted) {
+  print('Camera permission granted');
+} else {
+  print('Camera permission denied');
+}
+```
+
+## 9.6 Permission Flow
+
+```mermaid
+flowchart TD
+  A["User taps Upload Photo"] --> B["App checks permission"]
+  B --> C{"Permission granted?"}
+  C -->|"Yes"| D["Open camera or gallery"]
+  C -->|"No"| E["Request permission"]
+  E --> F{"User allows?"}
+  F -->|"Yes"| D
+  F -->|"No"| G["Show message or settings option"]
+```
+
+## 9.7 Common Exam Points and Mistakes
+
+Important points:
+
+- Plugins connect Flutter with native device features.
+- Permissions are required for sensitive features.
+- Android and iOS may need extra configuration files.
+- Always handle denied permission.
+- Do not assume permission is always granted.
+
+Common mistakes:
+
+- Forgetting Android/iOS permission setup
+- Asking permission without explaining why
+- Not handling user denial
+- Calling camera/location before permission check
+
+## 9.8 Sample Long Question and Answer
+
+### Question
+
+Explain how Flutter accesses platform-specific features using plugins. Describe the use of `image_picker` and `permission_handler` with examples.
+
+### Answer
+
+Flutter apps are written mainly in Dart, but many mobile features belong to the native operating system. Camera, gallery, location, storage, microphone, and notifications are examples of platform-specific features. Flutter accesses these features using plugins. A plugin works as a bridge between Dart code and native Android/iOS code.
+
+Most plugins provide a simple Dart API. Internally, the plugin communicates with native Android/iOS code using platform channels or platform-specific implementations. The developer writes simple Flutter code, but the actual camera, gallery, or location operation is done by the mobile operating system.
+
+The `image_picker` plugin allows the app to pick an image from the camera or gallery. In a Fitness Tracker app, it can be used to upload a profile picture, progress photo, or meal photo. The user taps a button, the app requests permission if needed, the plugin opens the camera/gallery, and then it returns the selected image path.
+
+The `permission_handler` plugin is used to request and check permissions before using sensitive features like camera and location. Permissions are important because mobile operating systems protect user privacy. The app should not access camera, photos, or location without user approval.
+
+Before accessing camera or gallery, the app should check permission. If permission is granted, the app can open the camera or gallery. If permission is denied, the app should show a proper message or guide the user to settings. A good app also explains why the permission is needed, for example: "We need camera permission to upload your workout progress photo." This makes the app safe, user-friendly, and platform-compliant.
+
+## 9.9 MCQs
+
+1. A Flutter plugin is mainly used to:
+   - A. Access platform-specific features
+   - B. Delete widgets
+   - C. Replace Dart language
+   - D. Remove Android and iOS folders
+   - Answer: A
+
+2. Which plugin is commonly used to pick image from gallery or camera?
+   - A. image_picker
+   - B. google_fonts
+   - C. provider
+   - D. bloc_test
+   - Answer: A
+
+3. Which plugin is used to request camera or location permission?
+   - A. permission_handler
+   - B. dio
+   - C. intl only
+   - D. url_launcher only
+   - Answer: A
+
+4. If user denies permission, the app should:
+   - A. Handle it gracefully
+   - B. Crash immediately
+   - C. Ignore user choice
+   - D. Delete app state
+   - Answer: A
+
+5. Platform channels connect:
+   - A. Dart and native platform code
+   - B. Two Text widgets only
+   - C. Only Firebase and Firestore
+   - D. Only Row and Column
+   - Answer: A
+
+---
+
+# 10. Firebase Integration
+
+## 10.1 Definition
+
+Firebase is a backend platform by Google that provides services such as authentication, cloud database, storage, hosting, analytics, and notifications.
+
+In Flutter, Firebase is commonly used to build apps without writing a full backend server from the beginning.
+
+## 10.2 Beginner Explanation
+
+Firebase can be imagined as a ready-made backend toolbox.
+
+Instead of creating a server, database, login system, and hosting manually, Firebase gives many of these services in one platform.
+
+For a Fitness Tracker app, Firebase can store:
+
+- User profile
+- Daily steps
+- Workout records
+- Progress history
+- Uploaded images
+
+## 10.3 Firebase Setup Overview
+
+Basic steps:
+
+1. Create Firebase project.
+2. Register Android/iOS app.
+3. Add Firebase configuration files.
+4. Add Firebase packages in Flutter.
+5. Initialize Firebase before running the app.
+
+Add common Firebase packages using Flutter command:
+
+```bash
+flutter pub add firebase_core cloud_firestore
+```
+
+Initialize Firebase:
+
+```dart
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const FitnessApp());
+}
+```
+
+## 10.4 Cloud Firestore
+
+Cloud Firestore is a NoSQL cloud database.
+
+It stores data in:
+
+- Collections
+- Documents
+- Fields
+
+Fitness Tracker example:
+
+```mermaid
+flowchart TD
+  A["Collection: users"] --> B["Document: user_1"]
+  B --> C["Field: name = Aadarsha"]
+  B --> D["Field: goal = 10000"]
+  B --> E["Subcollection: workouts"]
+  E --> F["Document: workout_1"]
+  F --> G["Field: title = Morning Run"]
+  F --> H["Field: duration = 30"]
+```
+
+### Collection, Document, and Field
+
+| Term | Simple Meaning | Fitness Tracker Example |
+|---|---|---|
+| Collection | Group of documents | `users`, `workouts` |
+| Document | One record inside collection | `user_1`, `workout_1` |
+| Field | Data inside document | `name`, `duration`, `goal` |
+
+Firestore is not like a traditional SQL table. It does not use rows and columns in the same way. It uses flexible documents. Each document can have different fields, but in a real app it is better to keep a consistent structure.
+
+## 10.5 Add Data to Firestore
+
+```dart
+await FirebaseFirestore.instance
+    .collection('workouts')
+    .add({
+      'title': 'Morning Run',
+      'duration': 30,
+      'createdAt': FieldValue.serverTimestamp(),
+    });
+```
+
+## 10.6 Read Data from Firestore
+
+```dart
+StreamBuilder<QuerySnapshot>(
+  stream: FirebaseFirestore.instance
+      .collection('workouts')
+      .snapshots(),
+  builder: (context, snapshot) {
+    if (!snapshot.hasData) {
+      return CircularProgressIndicator();
+    }
+
+    final docs = snapshot.data!.docs;
+
+    return ListView.builder(
+      itemCount: docs.length,
+      itemBuilder: (context, index) {
+        final workout = docs[index];
+        return Text(workout['title']);
+      },
+    );
+  },
+)
+```
+
+## 10.7 Firestore Data Flow
+
+```mermaid
+flowchart TD
+  A["Flutter UI"] --> B["Firebase SDK"]
+  B --> C["Cloud Firestore"]
+  C --> D["Collection"]
+  D --> E["Document"]
+  E --> F["Fields"]
+  C --> G["Realtime Stream"]
+  G --> A
+```
+
+## 10.8 Firebase vs REST API
+
+| Point | Firebase Firestore | REST API |
+|---|---|---|
+| Backend | Managed by Firebase | Built by backend team |
+| Data update | Realtime support | Usually request-response |
+| Structure | Collections/documents | Endpoints/resources |
+| Setup | Faster for small apps | More flexible for custom backend |
+| Example | Live step data | Fetch workout plans |
+
+## 10.9 Firestore CRUD Operations
+
+CRUD means Create, Read, Update, and Delete.
+
+| Operation | Firestore Method | Example |
+|---|---|---|
+| Create | `add()` or `set()` | Add workout |
+| Read | `get()` or `snapshots()` | Read workout list |
+| Update | `update()` | Edit workout duration |
+| Delete | `delete()` | Delete workout |
+
+Update example:
+
+```dart
+await FirebaseFirestore.instance
+    .collection('workouts')
+    .doc('workout_1')
+    .update({'duration': 45});
+```
+
+Delete example:
+
+```dart
+await FirebaseFirestore.instance
+    .collection('workouts')
+    .doc('workout_1')
+    .delete();
+```
+
+`get()` reads data once. `snapshots()` listens continuously and updates UI in realtime when Firestore data changes.
+
+## 10.10 Common Exam Points and Mistakes
+
+Important points:
+
+- Firebase provides backend services.
+- Firestore is a NoSQL database.
+- Firestore stores data in collections and documents.
+- `StreamBuilder` is useful for realtime updates.
+- Firebase must be initialized before use.
+
+Common mistakes:
+
+- Forgetting `WidgetsFlutterBinding.ensureInitialized()`
+- Forgetting Firebase configuration
+- Confusing collection and document
+- Not securing Firestore rules
+- Storing deeply nested data without planning
+
+## 10.11 Sample Long Question and Answer
+
+### Question
+
+Explain Firebase integration in Flutter. Describe Firebase setup and Firestore CRUD operation with a Fitness Tracker example.
+
+### Answer
+
+Firebase is a backend platform by Google that provides services such as authentication, database, storage, analytics, hosting, and notifications. Flutter apps can use Firebase to store and retrieve data without building a complete backend server manually. This is useful for student projects and startup-style apps because Firebase reduces backend setup time.
+
+To integrate Firebase, a Firebase project is created first in Firebase Console. Then the Android and iOS apps are registered. Firebase configuration files are added to the Flutter project. Required packages such as `firebase_core` and `cloud_firestore` are installed. Before using Firebase, the app must call `WidgetsFlutterBinding.ensureInitialized()` and `Firebase.initializeApp()` inside `main()` before `runApp()`. This ensures Firebase is ready before the app tries to read or write data.
+
+Cloud Firestore is a NoSQL cloud database. It stores data in collections, documents, and fields. A collection is a group of documents, a document is one record, and fields are the values inside that document. In a Fitness Tracker app, the `users` collection may contain user documents. Each user document may contain fields like name, age, daily goal, and email. A `workouts` collection may store workout documents with title, duration, calories, and date.
+
+Firestore supports CRUD operations. Create means adding a new document using `add()` or `set()`. Read means getting data using `get()` for one-time reading or `snapshots()` for realtime reading. Update means changing fields using `update()`. Delete means removing a document using `delete()`. In Flutter, `StreamBuilder` is commonly used with Firestore snapshots because it automatically rebuilds the UI when database data changes.
+
+Firebase is useful because it reduces backend development time and supports realtime updates. However, developers must plan database structure carefully. They should avoid unnecessary deep nesting, keep data secure using Firestore security rules, and avoid storing sensitive information without protection. In a Fitness Tracker app, Firestore can make the dashboard update immediately when a new workout is added.
+
+## 10.12 MCQs
+
+1. Firebase is mainly used as:
+   - A. Backend platform
+   - B. Font package only
+   - C. Dart operator
+   - D. Widget tree only
+   - Answer: A
+
+2. Cloud Firestore is:
+   - A. NoSQL cloud database
+   - B. Image widget
+   - C. Navigation method
+   - D. Android emulator
+   - Answer: A
+
+3. Firestore stores data mainly in:
+   - A. Collections and documents
+   - B. Rows and columns only
+   - C. CSS selectors
+   - D. Routes only
+   - Answer: A
+
+4. Which widget is commonly used for realtime Firestore data?
+   - A. StreamBuilder
+   - B. MaterialApp only
+   - C. GestureDetector only
+   - D. Padding only
+   - Answer: A
+
+5. Firebase should be initialized:
+   - A. Before runApp
+   - B. After app is closed
+   - C. Only in AndroidManifest
+   - D. Inside pubspec.lock
+   - Answer: A
+
+---
+
+# 11. Advanced State Management
+
+## 11.1 Definition
+
+Advanced state management means managing app data using organized patterns and packages when the app becomes large or complex.
+
+Common advanced state management solutions in Flutter are:
+
+- Bloc / Cubit
+- Riverpod
+- GetX
+
+## 11.2 Why Advanced State Management is Needed
+
+`setState` is good for small local changes. But large apps need better structure.
+
+In a Fitness Tracker app, advanced state management may be needed for:
+
+- Login state
+- Workout API state
+- Theme state
+- User profile
+- Step counter
+- Offline cache
+- Multiple screens sharing same data
+
+## 11.3 Bloc and Cubit
+
+Bloc separates UI from business logic using events and states.
+
+Cubit is a simpler version of Bloc. It does not require separate event classes.
+
+### Bloc Flow
+
+```mermaid
+flowchart TD
+  A["User taps Load Workouts"] --> B["WorkoutEvent"]
+  B --> C["WorkoutBloc"]
+  C --> D["Repository / API"]
+  D --> C
+  C --> E["WorkoutState"]
+  E --> F["UI updates with BlocBuilder"]
+```
+
+### Cubit Example
+
+```dart
+class CounterCubit extends Cubit<int> {
+  CounterCubit() : super(0);
+
+  void increment() {
+    emit(state + 1);
+  }
+}
+```
+
+## 11.4 Important flutter_bloc Widgets
+
+| Widget | Use |
+|---|---|
+| BlocProvider | Provides Bloc/Cubit to widget tree |
+| BlocBuilder | Rebuilds UI when state changes |
+| BlocListener | Performs one-time actions like snackbar/navigation |
+| BlocConsumer | Combines builder and listener |
+| MultiBlocProvider | Provides multiple blocs |
+
+### How BlocProvider Works
+
+`BlocProvider` is usually placed above the screen that needs the Bloc. It creates the Bloc object and stores it in the widget tree. Child widgets can then find the Bloc using `BuildContext`.
+
+```dart
+BlocProvider(
+  create: (_) => WorkoutBloc(repository),
+  child: const WorkoutScreen(),
+)
+```
+
+Inside `WorkoutScreen`, the same Bloc can be used:
+
+```dart
+context.read<WorkoutBloc>().add(LoadWorkouts());
+```
+
+This is dependency injection because the screen does not create the Bloc itself. The Bloc is provided from above. This makes the screen cleaner and easier to test.
+
+### BlocProvider Scope
+
+Scope means where the Bloc is available.
+
+| Placement | Available To |
+|---|---|
+| Above one screen | Only that screen and child widgets |
+| Above `MaterialApp` | Almost whole app |
+| Inside a list item | Only that list item subtree |
+
+In a Fitness Tracker app, `AuthBloc` may be placed near the top of the app because login state is needed by many screens. `WorkoutBloc` may be placed only above the workout screen because workout loading is needed there only.
+
+### BlocBuilder vs BlocListener
+
+`BlocBuilder` is for building UI. It runs when state changes and returns a widget.
+
+`BlocListener` is for actions that should happen once. It does not return UI. It is good for:
+
+- Snackbar
+- Dialog
+- Navigation
+- Showing success/error message once
+
+Do not use `BlocBuilder` for navigation. If navigation is done inside the builder, it may run many times because build can be called many times.
+
+## 11.5 Riverpod
+
+Riverpod is a state management and dependency injection solution for Dart and Flutter.
+
+It is similar in idea to Provider, but it is more flexible and does not depend directly on `BuildContext`.
+
+Simple provider:
+
+```dart
+final stepGoalProvider = Provider<int>((ref) {
+  return 10000;
+});
+```
+
+Reading in widget:
+
+```dart
+class GoalText extends ConsumerWidget {
+  const GoalText({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final goal = ref.watch(stepGoalProvider);
+    return Text('Goal: $goal steps');
+  }
+}
+```
+
+### How Riverpod Works
+
+Riverpod stores providers outside the widget tree as normal Dart objects. A widget reads the provider using `ref.watch`, `ref.read`, or `ref.listen`.
+
+| Riverpod Method | Meaning |
+|---|---|
+| `ref.watch` | Listen and rebuild when value changes |
+| `ref.read` | Read once or call method |
+| `ref.listen` | Listen for side effects |
+
+Because Riverpod does not depend directly on `BuildContext`, it is easier to test and can be used more flexibly. In a Fitness Tracker app, Riverpod can provide `WorkoutRepository`, `AuthService`, and `StepGoalProvider` in a clean way.
+
+## 11.6 GetX
+
+GetX is a Flutter package that provides state management, dependency injection, and route management with less boilerplate.
+
+Simple GetX controller:
+
+```dart
+class StepController extends GetxController {
+  var steps = 0.obs;
+
+  void addStep() {
+    steps.value++;
+  }
+}
+```
+
+UI:
+
+```dart
+Obx(() => Text('Steps: ${controller.steps.value}'))
+```
+
+### How GetX Works
+
+GetX often uses controller classes. A controller stores state and methods. Reactive values are created using `.obs`. When an `.obs` value changes, widgets wrapped with `Obx` rebuild automatically.
+
+In a Fitness Tracker app, a `StepController` can store step count. When `steps.value++` is called, only the `Obx` widget reading that value rebuilds.
+
+GetX can reduce boilerplate, but students should remember that less boilerplate does not mean no structure. Business logic should still be kept away from UI widgets.
+
+## 11.7 Provider vs Bloc vs Riverpod vs GetX
+
+| Tool | Simple Meaning | Best Use |
+|---|---|---|
+| Provider | Provides and listens to objects | Small to medium apps |
+| Bloc | Event-state structured pattern | Large apps, testable logic |
+| Riverpod | Provider-like but more flexible | Scalable apps with DI |
+| GetX | All-in-one simple package | Fast development, less boilerplate |
+
+## 11.8 Common Exam Points and Mistakes
+
+Important points:
+
+- Bloc uses events and states.
+- Cubit uses methods and states.
+- Riverpod does not require `BuildContext` for reading providers.
+- GetX uses reactive variables like `.obs`.
+- Advanced state management improves separation of concerns.
+
+Common mistakes:
+
+- Using advanced packages for very small local state
+- Putting business logic inside widgets
+- Rebuilding too much UI unnecessarily
+- Using `BlocListener` for UI building
+- Using `BlocBuilder` for navigation side effects
+
+## 11.9 Sample Long Question and Answer
+
+### Question
+
+Compare Bloc, Riverpod, and GetX for advanced state management in Flutter.
+
+### Answer
+
+Advanced state management is used when a Flutter application becomes large and has many screens sharing data. In small apps, `setState()` may be enough. But in large apps, state may come from login, API calls, local database, theme settings, notifications, and user profile. If all this logic is kept inside widgets, the app becomes difficult to maintain and test. Bloc, Riverpod, and GetX are popular solutions for organizing such state.
+
+Bloc separates UI from business logic using events and states. The UI sends events to the Bloc, the Bloc performs logic, and then emits states. `BlocProvider` provides the Bloc to the widget tree. `BlocBuilder` rebuilds UI when state changes. `BlocListener` handles side effects such as snackbar and navigation. In a Fitness Tracker app, a workout screen can send `LoadWorkouts` event. The Bloc emits `WorkoutLoading`, calls repository/API, and then emits `WorkoutLoaded` or `WorkoutError`. Bloc is highly structured and testable, so it is suitable for large applications with many business rules.
+
+Riverpod is a flexible state management and dependency injection solution. It improves many ideas from Provider and does not depend directly on `BuildContext`. Widgets use `ref.watch` to listen, `ref.read` to call methods or read once, and `ref.listen` for side effects. Riverpod is useful when the app needs clean dependency management. For example, it can provide an API service, repository, auth state, and theme state separately.
+
+GetX provides state management, routing, and dependency injection with less boilerplate. It uses controller classes and reactive variables such as `.obs`. Widgets wrapped with `Obx` rebuild when the reactive value changes. For example, a `StepController` may store `steps = 0.obs`; when steps changes, the step text updates automatically. GetX can be fast for development, but students should still keep business logic organized in controllers instead of mixing everything inside widgets.
+
+In conclusion, Bloc is best for highly structured and testable large apps, Riverpod is good for scalable dependency management, and GetX is useful for quick reactive development with less boilerplate. The best choice depends on project size, team knowledge, testing needs, and how complex the app state is.
+
+## 11.10 MCQs
+
+1. Bloc mainly works with:
+   - A. Events and states
+   - B. Only images
+   - C. Only CSS
+   - D. Only AndroidManifest
+   - Answer: A
+
+2. Cubit is simpler than Bloc because:
+   - A. It uses methods instead of separate event classes
+   - B. It removes all states
+   - C. It works only on iOS
+   - D. It cannot emit values
+   - Answer: A
+
+3. Riverpod reads providers using:
+   - A. WidgetRef
+   - B. Android SDK
+   - C. ImageSource only
+   - D. AppBar
+   - Answer: A
+
+4. GetX reactive variables commonly use:
+   - A. .obs
+   - B. .png
+   - C. .yaml only
+   - D. .route only
+   - Answer: A
+
+5. BlocListener is best for:
+   - A. One-time side effects like snackbar/navigation
+   - B. Building every list item only
+   - C. Defining font family
+   - D. Adding image asset path
+   - Answer: A
+
+---
+
+# 12. Geolocation and Local Notifications
+
+## 12.1 Definition
+
+Geolocation means finding the current physical location of the device.
+
+Local notification means showing a notification from the app itself, even without receiving a push message from a server.
+
+## 12.2 Beginner Explanation
+
+In a Fitness Tracker app:
+
+- Geolocation can track running route.
+- Local notification can remind the user to drink water or start workout.
+
+Both features need platform-specific support and permissions.
+
+## 12.3 geolocator Plugin
+
+`geolocator` is commonly used to get device location.
+
+Example:
+
+```dart
+final position = await Geolocator.getCurrentPosition();
+
+print(position.latitude);
+print(position.longitude);
+```
+
+Before using location, the app should:
+
+1. Check whether location service is enabled.
+2. Check permission.
+3. Request permission if needed.
+4. Handle denied permission.
+5. Get current position.
+
+### Location Permission States
+
+Location permission can have different states.
+
+| State | Meaning | App Action |
+|---|---|---|
+| Granted | User allowed location | Get location |
+| Denied | User denied for now | Ask again or explain |
+| Denied forever | User blocked permission | Open app settings |
+| Service disabled | GPS/location is off | Ask user to turn on location |
+
+Fitness Tracker example:
+
+If a user starts "Outdoor Run", the app should first check location service. If service is off, it should ask the user to turn on location. If permission is denied, it should explain why location is needed.
+
+### Position Data
+
+Location gives data such as:
+
+- Latitude
+- Longitude
+- Accuracy
+- Speed
+- Timestamp
+
+In a running tracker, latitude and longitude can be used to draw route. Speed and timestamp can help calculate pace.
+
+## 12.4 flutter_local_notifications Plugin
+
+`flutter_local_notifications` is used to display local notifications.
+
+Fitness Tracker example:
+
+- Daily workout reminder
+- Water reminder
+- Step goal reminder
+
+Basic idea:
+
+```dart
+await notificationsPlugin.show(
+  1,
+  'Workout Reminder',
+  'Time for your evening walk',
+  notificationDetails,
+);
+```
+
+### Notification Types
+
+| Notification Type | Meaning | Fitness Tracker Example |
+|---|---|---|
+| Immediate notification | Shows now | "Workout saved successfully" |
+| Scheduled notification | Shows later | "Time for morning walk" |
+| Repeating notification | Shows repeatedly | Daily water reminder |
+
+Local notifications are different from push notifications. Push notifications usually come from a server. Local notifications are scheduled or shown by the app on the device.
+
+### Good Notification Practice
+
+A good app should not disturb the user too much. Notifications should be useful, timely, and related to user goals.
+
+Good examples:
+
+- "You are 500 steps away from your goal."
+- "Time for your planned workout."
+
+Bad example:
+
+- Sending too many random reminders without user control.
+
+## 12.5 Location and Notification Flow
+
+```mermaid
+flowchart TD
+  A["Fitness Tracker App"] --> B["Check Permission"]
+  B --> C{"Allowed?"}
+  C -->|"Yes"| D["Get Location or Show Notification"]
+  C -->|"No"| E["Request Permission"]
+  E --> F{"User Allows?"}
+  F -->|"Yes"| D
+  F -->|"No"| G["Show Helpful Message"]
+```
+
+## 12.6 Common Exam Points and Mistakes
+
+Important points:
+
+- Location requires permission.
+- Location service may be turned off.
+- Local notification may require platform setup.
+- Notifications improve user engagement.
+- Permission denial must be handled.
+
+Common mistakes:
+
+- Not checking location service status
+- Ignoring denied permission
+- Forgetting Android/iOS notification setup
+- Showing too many notifications
+- Not explaining why permission is required
+
+## 12.7 Sample Long Question and Answer
+
+### Question
+
+Explain how geolocation and local notifications can be implemented in a Flutter Fitness Tracker app.
+
+### Answer
+
+Geolocation is used to get the physical location of the device. In a Fitness Tracker app, it can be used to track outdoor running route, calculate distance, measure speed, and show the user's path on a map. The `geolocator` plugin can get the current latitude and longitude of the device. Location data may also include accuracy, speed, altitude, and timestamp.
+
+Before getting location, the app should check whether location service is enabled. Even if permission is granted, location cannot work properly if GPS/location service is turned off. After that, the app should check permission. If permission is denied, the app can request permission. If permission is denied forever, the app should guide the user to app settings. This is important because location is sensitive personal data.
+
+Local notifications are notifications generated by the app itself. They do not always require a server message. In a Fitness Tracker app, local notifications can remind users to exercise, drink water, or complete their step goal. The `flutter_local_notifications` plugin is commonly used for this feature. Notifications can be immediate, scheduled, or repeating. For example, the app may show a daily reminder at 6 AM for morning walk.
+
+Both geolocation and notifications need platform-specific configuration and permission handling. A good app should clearly explain why permission is required, handle denial gracefully, and avoid disturbing the user with too many notifications. These features make a Fitness Tracker app more useful because they connect the app with real-world movement and user routine.
+
+## 12.8 MCQs
+
+1. Geolocation is used to:
+   - A. Get device location
+   - B. Change font only
+   - C. Create Dart class only
+   - D. Build theme only
+   - Answer: A
+
+2. Which plugin is commonly used for location in Flutter?
+   - A. geolocator
+   - B. google_fonts
+   - C. bloc_test
+   - D. dio only
+   - Answer: A
+
+3. Local notifications are:
+   - A. Notifications generated by the app/device
+   - B. Only server database rows
+   - C. Only app icons
+   - D. Only widgets
+   - Answer: A
+
+4. Before using location, app should check:
+   - A. Permission and service status
+   - B. Only app color
+   - C. Only font size
+   - D. Only route name
+   - Answer: A
+
+5. Fitness app can use notification for:
+   - A. Workout reminder
+   - B. Deleting main.dart
+   - C. Removing widgets
+   - D. Changing Android folder name
+   - Answer: A
+
+---
+
+# 13. Animations and Custom UI
+
+## 13.1 Definition
+
+Animation in Flutter means changing UI values smoothly over time, such as size, position, color, opacity, or rotation.
+
+Custom UI means creating user interface designs that go beyond basic ready-made widgets.
+
+## 13.2 Beginner Explanation
+
+Animation makes an app feel alive.
+
+In a Fitness Tracker app:
+
+- Progress ring fills smoothly
+- Step counter number increases smoothly
+- Workout card expands when tapped
+- Achievement badge appears with fade animation
+
+## 13.3 Types of Animation
+
+| Type | Meaning | Example |
+|---|---|---|
+| Implicit animation | Flutter handles animation automatically | AnimatedContainer |
+| Explicit animation | Developer controls animation | AnimationController |
+| Hero animation | Shared element animation between screens | Profile image transition |
+
+## 13.4 Animation Building Blocks
+
+Flutter animation is based on changing values over time.
+
+Important building blocks:
+
+| Concept | Meaning |
+|---|---|
+| Duration | How long animation takes |
+| Curve | Speed style of animation |
+| Tween | Start value and end value |
+| AnimationController | Controls animation time |
+| AnimatedBuilder | Rebuilds only animated part |
+| Ticker | Provides frame-by-frame signal |
+
+### Duration
+
+Duration decides animation time.
+
+```dart
+duration: const Duration(milliseconds: 300)
+```
+
+A very short animation may not be visible. A very long animation may make the app feel slow.
+
+### Curve
+
+Curve controls how animation moves.
+
+Example:
+
+- `Curves.linear`: same speed
+- `Curves.easeIn`: starts slow
+- `Curves.easeOut`: ends slow
+- `Curves.easeInOut`: smooth start and end
+
+Fitness Tracker example:
+
+A progress ring should fill smoothly using `Curves.easeOut` so the motion feels natural.
+
+## 13.5 Implicit Animation Example
+
+`AnimatedContainer` automatically animates changes.
+
+```dart
+AnimatedContainer(
+  duration: Duration(milliseconds: 300),
+  width: isSelected ? 200 : 120,
+  height: 80,
+  color: isSelected ? Colors.green : Colors.grey,
+)
+```
+
+Implicit animations are beginner-friendly because the developer only changes the value. Flutter compares old value and new value, then animates between them.
+
+Common implicit animation widgets:
+
+- `AnimatedContainer`
+- `AnimatedOpacity`
+- `AnimatedPadding`
+- `AnimatedAlign`
+- `TweenAnimationBuilder`
+
+Fitness Tracker example:
+
+When the user completes 80% of daily step goal, a progress card can change from grey to green using `AnimatedContainer`.
+
+## 13.6 Explicit Animation
+
+Explicit animation gives more control.
+
+Common classes:
+
+- `AnimationController`
+- `Tween`
+- `AnimatedBuilder`
+
+Simple meaning:
+
+- Controller controls time.
+- Tween controls value range.
+- Builder rebuilds animated UI.
+
+Example:
+
+```dart
+class ProgressRing extends StatefulWidget {
+  const ProgressRing({super.key});
+
+  @override
+  State<ProgressRing> createState() => _ProgressRingState();
+}
+
+class _ProgressRingState extends State<ProgressRing>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    )..forward();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (context, child) {
+        return Text('${(controller.value * 100).toInt()}%');
+      },
+    );
+  }
+}
+```
+
+### Why dispose is Important
+
+`AnimationController` uses resources to listen to screen frames. If the widget is removed but the controller is not disposed, memory/resource problems can happen. Therefore, always call `controller.dispose()` inside `dispose()`.
+
+## 13.7 Hero Animation
+
+Hero animation is used when the same visual element moves from one screen to another.
+
+Fitness Tracker example:
+
+The user's profile photo appears small on dashboard. When the user opens profile screen, the same photo expands smoothly.
+
+```dart
+Hero(
+  tag: 'profile-photo',
+  child: Image.network(user.photoUrl),
+)
+```
+
+Both screens must use the same `tag`.
+
+## 13.8 Custom Widgets
+
+A custom widget is a widget created by the developer to reuse UI.
+
+Fitness Tracker example:
+
+```dart
+class WorkoutCard extends StatelessWidget {
+  final String title;
+  final int duration;
+
+  const WorkoutCard({
+    super.key,
+    required this.title,
+    required this.duration,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        title: Text(title),
+        subtitle: Text('$duration minutes'),
+      ),
+    );
+  }
+}
+```
+
+### Why Custom Widgets Matter
+
+Custom widgets make code reusable and clean. Instead of copying the same workout card UI in many screens, the developer creates one `WorkoutCard` and uses it everywhere.
+
+Benefits:
+
+- Less duplicate code
+- Easier maintenance
+- Consistent UI
+- Easier testing
+- Cleaner screen files
+
+## 13.9 CustomPainter
+
+`CustomPainter` is used when normal widgets are not enough and we need to draw custom shapes.
+
+Fitness Tracker example:
+
+- Circular progress chart
+- Step goal ring
+- Calories graph
+
+How `CustomPainter` works:
+
+1. Create a class extending `CustomPainter`.
+2. Override `paint(Canvas canvas, Size size)`.
+3. Use `Canvas` to draw lines, circles, arcs, or paths.
+4. Use `Paint` to define color, stroke width, and style.
+5. Use `CustomPaint` widget to display it.
+
+Simple example idea:
+
+```dart
+class StepRingPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.green
+      ..strokeWidth = 8
+      ..style = PaintingStyle.stroke;
+
+    canvas.drawCircle(size.center(Offset.zero), 40, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
+```
+
+`shouldRepaint` tells Flutter whether the custom drawing should be repainted. Returning `false` is good when drawing does not change. If progress value changes, `shouldRepaint` should compare old and new values.
+
+## 13.10 Animation Flow
+
+```mermaid
+flowchart TD
+  A["User Action or State Change"] --> B["Animation Starts"]
+  B --> C["Value Changes Over Time"]
+  C --> D["Widget Rebuilds Smoothly"]
+  D --> E["User Sees Motion"]
+```
+
+## 13.11 Common Exam Points and Mistakes
+
+Important points:
+
+- Animation improves user experience.
+- Use implicit animations for simple cases.
+- Use explicit animations for more control.
+- `AnimationController` controls time.
+- `Tween` defines start and end values.
+- `Curve` controls motion feeling.
+- Custom widgets improve reuse.
+- CustomPainter is used for custom drawing.
+
+Common mistakes:
+
+- Overusing animations
+- Making animations too slow
+- Forgetting to dispose `AnimationController`
+- Repeating same UI instead of creating custom widget
+- Using same Hero tag for unrelated elements
+- Repainting custom painter unnecessarily
+
+## 13.12 Sample Long Question and Answer
+
+### Question
+
+Explain animations and custom UI in Flutter with examples.
+
+### Answer
+
+Animation in Flutter means smoothly changing UI values over time. It can change size, color, opacity, position, rotation, or progress value. Animation improves user experience because it gives visual feedback and makes the app feel smooth and interactive. In a Fitness Tracker app, animation can be used when a progress ring fills, a step count increases, a workout card expands, or an achievement badge appears.
+
+Flutter supports implicit and explicit animations. Implicit animations are easier. In implicit animation, the developer changes a property value and Flutter automatically animates from the old value to the new value. Examples include `AnimatedContainer`, `AnimatedOpacity`, `AnimatedPadding`, and `AnimatedAlign`. For example, a workout card can become green when the workout is completed using `AnimatedContainer`.
+
+Explicit animation gives more control. It uses classes such as `AnimationController`, `Tween`, and `AnimatedBuilder`. `AnimationController` controls the time of the animation. `Tween` defines the beginning and ending value. `AnimatedBuilder` rebuilds the animated part of the UI efficiently. Explicit animation is useful when the developer needs to start, stop, reverse, repeat, or coordinate animations. When using `AnimationController`, the controller must be disposed inside `dispose()` to avoid resource problems.
+
+Flutter also supports Hero animation. Hero animation moves the same visual element between two screens. In a Fitness Tracker app, a small profile photo on dashboard can smoothly expand into a larger profile photo on the profile screen. Both Hero widgets must have the same tag.
+
+Custom UI means creating reusable and specialized widgets. In a Fitness Tracker app, a `WorkoutCard` widget can be created and reused in many screens. This reduces duplicate code and keeps design consistent. If normal widgets are not enough, `CustomPainter` can be used to draw custom shapes such as circular progress chart, step goal ring, or calories graph. `CustomPainter` uses `Canvas` and `Paint` to draw directly.
+
+Animations and custom UI should be used carefully. They should improve clarity and user experience, not distract the user. A good Flutter developer uses simple implicit animations for common UI changes and explicit animations only when more control is needed.
+
+## 13.13 MCQs
+
+1. AnimatedContainer is an example of:
+   - A. Implicit animation
+   - B. Database
+   - C. Permission plugin
+   - D. REST API
+   - Answer: A
+
+2. Which class controls explicit animation time?
+   - A. AnimationController
+   - B. MaterialApp
+   - C. FirebaseFirestore
+   - D. Dio
+   - Answer: A
+
+3. CustomPainter is used for:
+   - A. Custom drawing
+   - B. API request only
+   - C. Permission request only
+   - D. Navigation stack only
+   - Answer: A
+
+4. Custom widgets help in:
+   - A. Reusing UI code
+   - B. Removing Dart
+   - C. Deleting app screens
+   - D. Replacing Android SDK
+   - Answer: A
+
+5. A good animation should be:
+   - A. Smooth and meaningful
+   - B. Random and confusing
+   - C. Always very slow
+   - D. Used everywhere without reason
+   - Answer: A
+
+---
+
+# 14. Flutter App Testing
+
+## 14.1 Definition
+
+Testing in Flutter means checking whether app logic, widgets, and complete user flows work correctly.
+
+Testing helps developers find bugs early and build reliable apps.
+
+## 14.2 Beginner Explanation
+
+Testing is like checking homework before submission.
+
+In a Fitness Tracker app, testing can check:
+
+- Step calculation works correctly
+- Workout card appears on screen
+- Login flow works
+- Bloc emits correct states
+- API error message is shown properly
+
+## 14.3 Types of Flutter Tests
+
+| Test Type | What It Tests | Example |
+|---|---|---|
+| Unit test | Single function/class | Calories calculation |
+| Widget test | Single widget UI | WorkoutCard displays title |
+| Integration test | Full app flow | Login and view dashboard |
+| Bloc test | Bloc/Cubit state flow | Load workouts success/error |
+
+## 14.4 Testing Pyramid
+
+Testing pyramid means most tests should be small and fast, and fewer tests should be large and slow.
+
+```mermaid
+flowchart TB
+  A["Few Integration Tests<br/>Full app flow"] --> B["Some Widget Tests<br/>UI components"]
+  B --> C["Many Unit Tests<br/>Logic and classes"]
+```
+
+Unit tests are at the bottom because they are fast and easy to write. Integration tests are at the top because they run more of the app and take more time.
+
+## 14.5 Unit Test Example
+
+```dart
+int calculateCalories(int minutes) {
+  return minutes * 8;
+}
+```
+
+Test:
+
+```dart
+test('calculates calories', () {
+  expect(calculateCalories(10), 80);
+});
+```
+
+## 14.6 Widget Test Example
+
+```dart
+testWidgets('shows workout title', (tester) async {
+  await tester.pumpWidget(
+    MaterialApp(
+      home: WorkoutCard(title: 'Run', duration: 30),
+    ),
+  );
+
+  expect(find.text('Run'), findsOneWidget);
+});
+```
+
+### How Widget Test Works
+
+In a widget test, Flutter creates the widget in a test environment. The tester can:
+
+- Pump a widget
+- Find text or widgets
+- Tap buttons
+- Enter text
+- Rebuild after state changes
+
+`pumpWidget()` puts the widget on test screen. `find.text()` searches for text. `expect()` checks the result.
+
+## 14.7 Bloc Test Idea
+
+Bloc test checks whether correct states are emitted after events/actions.
+
+Example flow:
+
+```mermaid
+flowchart TD
+  A["Add LoadWorkouts event"] --> B["WorkoutLoading"]
+  B --> C["API returns data"]
+  C --> D["WorkoutLoaded"]
+```
+
+Example idea:
+
+```dart
+blocTest<WorkoutBloc, WorkoutState>(
+  'emits loading and loaded when API succeeds',
+  build: () => WorkoutBloc(fakeRepository),
+  act: (bloc) => bloc.add(LoadWorkouts()),
+  expect: () => [
+    isA<WorkoutLoading>(),
+    isA<WorkoutLoaded>(),
+  ],
+);
+```
+
+This checks business logic without manually opening the full app.
+
+## 14.8 Integration Testing
+
+Integration tests check a real app flow.
+
+Fitness Tracker example:
+
+1. Open app.
+2. Enter login details.
+3. Tap login.
+4. Dashboard opens.
+5. Workout list appears.
+
+Integration tests are useful because they test how screens work together. But they are slower than unit tests and widget tests. Therefore, developers should not depend only on integration tests.
+
+## 14.9 Mocking and Fake Services
+
+Real APIs can be slow, unstable, or unavailable during tests. For this reason, developers use fake or mock services.
+
+Example:
+
+- Real service calls internet.
+- Fake service returns fixed sample workout data.
+
+This makes tests faster and more reliable.
+
+Fitness Tracker example:
+
+Instead of calling the real workout API during unit test, a fake repository can return:
+
+```dart
+[
+  Workout(id: 1, title: 'Morning Run', duration: 30),
+]
+```
+
+Then the test can check whether Bloc emits `WorkoutLoaded`.
+
+## 14.10 Common Exam Points and Mistakes
+
+Important points:
+
+- Unit tests are fast and test logic.
+- Widget tests test UI widgets.
+- Integration tests test complete app flows.
+- Bloc tests check state transitions.
+- Testing improves reliability and confidence.
+
+Common mistakes:
+
+- Testing only happy path
+- Ignoring error cases
+- Writing tests after app is already broken
+- Depending on real API in every test
+- Not mocking dependencies
+
+## 14.11 Sample Long Question and Answer
+
+### Question
+
+Explain different types of testing in Flutter. Include examples from a Fitness Tracker app.
+
+### Answer
+
+Testing in Flutter is the process of checking whether app logic, widgets, state management, and user flows work correctly. Testing helps developers find bugs early, maintain app quality, and change code with confidence. In a Fitness Tracker app, tests can check calories calculation, workout card UI, login flow, and Bloc state changes.
+
+Unit testing checks a single function or class. It is fast and does not need a real phone UI. In a Fitness Tracker app, a calorie calculation function can be tested using `expect()`. For example, if 10 minutes of workout should burn 80 calories, the unit test checks that the function returns 80. Unit tests are suitable for services, repositories, utility functions, and business logic.
+
+Widget testing checks whether a widget appears and behaves correctly. Flutter provides a widget testing environment where the tester can pump widgets, tap buttons, enter text, and search for widgets. For example, a `WorkoutCard` widget can be tested to confirm that it displays the workout title and duration.
+
+Integration testing checks a complete user flow in the app. For example, the test can open the app, perform login, navigate to dashboard, and check whether workout data appears. Integration tests are closer to real user behavior, but they are slower than unit and widget tests.
+
+Bloc testing checks whether a Bloc or Cubit emits the correct states. For example, after the UI sends `LoadWorkouts`, the Bloc should emit `WorkoutLoading` and then `WorkoutLoaded` if API succeeds. If API fails, it should emit `WorkoutError`. This makes business logic predictable and testable.
+
+Testing often uses fake or mock services. A fake workout repository can return sample data instead of calling a real API. This makes tests faster and more reliable. A good testing strategy uses many unit tests, some widget tests, and fewer integration tests.
+
+## 14.12 MCQs
+
+1. Unit test mainly checks:
+   - A. Single function or class
+   - B. App store account
+   - C. Phone camera only
+   - D. UI color only
+   - Answer: A
+
+2. Widget test checks:
+   - A. Flutter widget UI
+   - B. Firebase billing only
+   - C. Android hardware only
+   - D. App icon only
+   - Answer: A
+
+3. Integration test checks:
+   - A. Complete app flow
+   - B. Only one variable
+   - C. Only pubspec comments
+   - D. Only font name
+   - Answer: A
+
+4. Bloc test checks:
+   - A. State changes emitted by Bloc/Cubit
+   - B. Image file extension only
+   - C. Device screen size only
+   - D. Play Store description only
+   - Answer: A
+
+5. Testing helps to:
+   - A. Find bugs early
+   - B. Remove all widgets
+   - C. Avoid writing code
+   - D. Delete API
+   - Answer: A
+
+---
+
+# 15. Releasing Flutter App
+
+## 15.1 Definition
+
+Releasing a Flutter app means preparing the app for real users and publishing it to app stores such as Google Play Store or Apple App Store.
+
+Release build is different from debug build. It is optimized for performance and does not include debugging tools.
+
+## 15.2 Beginner Explanation
+
+During development, the app is like a draft copy.
+
+Before publishing, the developer must:
+
+- Set app name and icon
+- Set package name or bundle identifier
+- Add permissions properly
+- Test app
+- Build release file
+- Upload to store
+
+## 15.3 Android Release
+
+Common Android release files:
+
+| File | Meaning |
+|---|---|
+| APK | Android app package |
+| AAB | Android App Bundle, commonly used for Play Store |
+
+Build commands:
+
+```bash
+flutter build apk --release
+flutter build appbundle --release
+```
+
+For Play Store, AAB is usually preferred.
+
+## 15.4 iOS Release
+
+iOS apps are released through Apple tools and App Store Connect.
+
+Common requirements:
+
+- Apple Developer account
+- Bundle identifier
+- Signing certificate
+- Provisioning profile
+- Xcode archive
+- App Store Connect listing
+
+Build command:
+
+```bash
+flutter build ipa
+```
+
+## 15.5 Release Checklist
+
+Before release:
+
+- Test app on real device
+- Check permissions
+- Check API base URL
+- Add app icon
+- Add splash screen
+- Set version number
+- Check privacy policy
+- Remove debug logs if needed
+- Build release artifact
+- Upload to store
+
+## 15.6 App Signing
+
+App signing proves that the app was built by the correct developer.
+
+For Android:
+
+- Developer creates or uses an upload key.
+- The app is signed before uploading.
+- Play Console verifies the app identity.
+
+For iOS:
+
+- Apple Developer account is required.
+- Signing certificate and provisioning profile are used.
+- Xcode/App Store Connect verifies the app.
+
+Without correct signing, the store may reject the app or the app may not install properly.
+
+## 15.7 Versioning
+
+Flutter version is usually written in `pubspec.yaml`.
+
+```yaml
+version: 1.0.0+1
+```
+
+Meaning:
+
+- `1.0.0` is version name shown to user
+- `+1` is build number used by store
+
+## 15.8 Build Modes
+
+Flutter has different build modes.
+
+| Build Mode | Use |
+|---|---|
+| Debug | Development and hot reload |
+| Profile | Performance testing |
+| Release | Final optimized app for users |
+
+Debug mode is not used for publishing. Release mode removes debugging overhead and improves performance.
+
+## 15.9 Release Flow
+
+```mermaid
+flowchart TD
+  A["Complete Flutter App"] --> B["Test on Device"]
+  B --> C["Configure App Name, Icon, Version"]
+  C --> D["Build Release APK/AAB/IPA"]
+  D --> E["Upload to Play Console or App Store Connect"]
+  E --> F["Review Process"]
+  F --> G["Published App"]
+```
+
+## 15.10 Common Exam Points and Mistakes
+
+Important points:
+
+- Debug build is for development.
+- Release build is for users.
+- Play Store commonly uses AAB.
+- iOS release requires Apple Developer account and signing.
+- App version and build number are important.
+- App signing is required for store publishing.
+- Privacy policy may be required for sensitive data/permissions.
+
+Common mistakes:
+
+- Uploading debug build
+- Forgetting app signing
+- Using wrong API URL
+- Not testing on real device
+- Missing privacy policy for sensitive permissions
+
+## 15.11 Sample Long Question and Answer
+
+### Question
+
+Explain the process of releasing a Flutter app to Android and iOS app stores.
+
+### Answer
+
+Releasing a Flutter app means preparing it for real users and publishing it to app stores such as Google Play Store and Apple App Store. During development, Flutter apps usually run in debug mode. Debug mode supports hot reload and debugging tools, but it is not suitable for publishing. For users, developers must create a release build, which is optimized for performance.
+
+Before release, the developer should configure app name, app icon, package name or bundle identifier, version number, permissions, API base URL, and privacy policy. The app should be tested on real devices because emulator testing may not reveal all issues. For example, camera, location, notification, and performance should be tested on real phones.
+
+For Android, the developer should configure signing. App signing proves that the app belongs to the correct developer. Then the app can be built using `flutter build apk --release` or `flutter build appbundle --release`. APK can be installed directly, but for Google Play Store, Android App Bundle (AAB) is commonly preferred. The app is uploaded to Google Play Console with screenshots, description, category, content rating, privacy policy, and release notes.
+
+For iOS, the developer needs an Apple Developer account, bundle identifier, signing certificate, provisioning profile, and App Store Connect setup. The app can be built using Flutter and Xcode tools, archived, and uploaded to App Store Connect. Apple reviews the app before publishing.
+
+Versioning is also important. In Flutter, version is written in `pubspec.yaml`, for example `1.0.0+1`. Here `1.0.0` is the version name shown to users and `+1` is the build number used by app stores. Every new upload usually needs a higher build number.
+
+In conclusion, releasing a Flutter app includes preparing app metadata, testing, signing, building release artifacts, uploading to store, and passing review. A Fitness Tracker app must especially check health data privacy, location permission, notification permission, and API production URL before release.
+
+## 15.12 MCQs
+
+1. Release build is used for:
+   - A. Real users/app publishing
+   - B. Only writing comments
+   - C. Deleting source code
+   - D. Only hot reload
+   - Answer: A
+
+2. Which Android file is commonly preferred for Play Store?
+   - A. AAB
+   - B. DOCX
+   - C. PNG only
+   - D. YAML only
+   - Answer: A
+
+3. Which command builds Android App Bundle?
+   - A. flutter build appbundle --release
+   - B. flutter doctor delete
+   - C. dart run ios only
+   - D. flutter clean store
+   - Answer: A
+
+4. iOS release commonly requires:
+   - A. Apple Developer account
+   - B. Only Android Studio emulator
+   - C. Firebase only
+   - D. Dio only
+   - Answer: A
+
+5. `version: 1.0.0+1` means:
+   - A. Version name and build number
+   - B. Only app color
+   - C. Only font size
+   - D. Only API URL
+   - Answer: A
+
+---
+
+# 16. Quick Revision Tables
+
+## 16.1 Flutter Core Summary
 
 | Topic | One-line exam answer |
 |---|---|
@@ -2400,8 +4593,14 @@ Therefore, state management is one of the most important topics in Flutter. Smal
 | Navigator | Manages screen stack |
 | Provider | State management package using provided objects and listeners |
 | Bloc | Pattern that separates business logic using events and states |
+| Dio | HTTP client package for API calls |
+| Firebase | Backend platform for database, auth, storage, and more |
+| Firestore | NoSQL cloud database using collections and documents |
+| Plugin | Package that connects Flutter with platform features |
+| Animation | Smooth UI change over time |
+| Testing | Checking logic, widgets, and app flows |
 
-## 8.2 Exam Difference Table
+## 16.2 Exam Difference Table
 
 | Pair | Main Difference |
 |---|---|
@@ -2413,10 +4612,13 @@ Therefore, state management is one of the most important topics in Flutter. Smal
 | push vs pop | push opens screen; pop closes current screen |
 | setState vs Provider | setState is local; Provider shares state |
 | Provider vs Bloc | Provider is simpler; Bloc is more structured |
+| REST API vs Firestore | REST uses endpoints; Firestore uses collections/documents |
+| Unit test vs Widget test | Unit tests logic; widget tests UI widgets |
+| Debug build vs Release build | Debug is for development; release is optimized for users |
 
 ---
 
-# 9. Important Long Questions for Practice
+# 17. Important Long Questions for Practice
 
 ## Question 1
 
@@ -2488,9 +4690,53 @@ Explain Provider and Bloc state management.
 - Bloc separates business logic from UI.
 - Provider is simpler; Bloc is better for large structured apps.
 
+## Question 6
+
+Explain API integration in Flutter using Dio.
+
+### Answer Outline
+
+- Define API call.
+- Explain REST API and JSON.
+- Add Dio dependency.
+- Create model class.
+- Create API service or repository.
+- Use async/await.
+- Handle loading, success, and error.
+- Display data using ListView.builder.
+
+## Question 7
+
+Explain Firebase Firestore integration in Flutter.
+
+### Answer Outline
+
+- Define Firebase.
+- Explain Firestore as NoSQL database.
+- Explain collections, documents, and fields.
+- Initialize Firebase.
+- Add data using add/set.
+- Read realtime data using snapshots and StreamBuilder.
+- Mention security rules and proper data planning.
+
+## Question 8
+
+Explain Flutter testing and releasing process.
+
+### Answer Outline
+
+- Define testing.
+- Unit test checks logic.
+- Widget test checks UI.
+- Integration test checks app flow.
+- Bloc test checks emitted states.
+- Release build is optimized.
+- Android uses APK/AAB.
+- iOS uses App Store Connect and signing.
+
 ---
 
-# 10. Extra MCQ Practice
+# 18. Extra MCQ Practice
 
 1. Which widget provides basic Material page structure?
    - A. Scaffold
@@ -2562,12 +4808,61 @@ Explain Provider and Bloc state management.
     - D. ++
     - Answer: A
 
+11. Which package is used for Dio API calls?
+    - A. dio
+    - B. flutter_test only
+    - C. cloud_firestore only
+    - D. google_fonts only
+    - Answer: A
+
+12. Which Firebase database stores collections and documents?
+    - A. Cloud Firestore
+    - B. ThemeData
+    - C. Navigator
+    - D. AnimationController
+    - Answer: A
+
+13. Which test checks UI widgets?
+    - A. Widget test
+    - B. Unit test only
+    - C. Store test only
+    - D. Font test only
+    - Answer: A
+
+14. Which command creates Android release app bundle?
+    - A. flutter build appbundle --release
+    - B. flutter run debug only
+    - C. dart format ios
+    - D. firebase init widget
+    - Answer: A
+
+15. Which plugin can get current location?
+    - A. geolocator
+    - B. google_fonts
+    - C. provider only
+    - D. dio only
+    - Answer: A
+
 ---
 
-# 11. References for Current Flutter Terminology
+# 19. References for Current Flutter Terminology
+
+These references are useful for teachers and students who want official wording:
 
 - Flutter architectural overview: https://docs.flutter.dev/resources/architectural-overview
 - Impeller rendering engine: https://docs.flutter.dev/perf/impeller
 - Platform channels: https://docs.flutter.dev/platform-integration/platform-channels
 - Flutter UI and widgets: https://docs.flutter.dev/ui
 - Flutter layout guide: https://docs.flutter.dev/ui/layout
+- Networking in Flutter: https://docs.flutter.dev/cookbook/networking/fetch-data
+- Flutter testing: https://docs.flutter.dev/testing
+- Flutter deployment: https://docs.flutter.dev/deployment
+- Flutter animations: https://docs.flutter.dev/ui/animations
+- Dio package: https://pub.dev/packages/dio
+- Firebase for Flutter: https://firebase.google.com/docs/flutter/setup
+- Cloud Firestore for Flutter: https://firebase.google.com/docs/firestore/quickstart
+- flutter_bloc package: https://pub.dev/packages/flutter_bloc
+- Riverpod documentation: https://riverpod.dev
+- GetX package: https://pub.dev/packages/get
+- geolocator package: https://pub.dev/packages/geolocator
+- flutter_local_notifications package: https://pub.dev/packages/flutter_local_notifications
